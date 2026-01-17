@@ -29,7 +29,9 @@ public class InMemoryTransactionRepository implements TransactionRepository {
     @Override
     public List<TransactionRecord> listByStatus(TransactionStatus status) {
         List<TransactionRecord> result = new ArrayList<TransactionRecord>();
+        // 遍历内存中的所有事务记录
         for (TransactionRecord record : store.values()) {
+            // 只收集状态匹配的事务记录
             if (record.getStatus() == status) {
                 result.add(record);
             }
